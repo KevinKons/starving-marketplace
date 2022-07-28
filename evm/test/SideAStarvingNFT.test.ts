@@ -2,6 +2,7 @@ import { expect } from 'chai';
 import { ethers } from 'hardhat';
 import { SideAStarvingNFT, SideBStarvingNFT } from '../typechain-types';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
+import { BigNumber } from 'ethers';
 
 
 describe('Test NFTs', () => {
@@ -45,5 +46,25 @@ describe('Test NFTs', () => {
 
         expect(await sideA.tokenURI(0)).to.equal(uriA);
         expect(await sideB.tokenURI(0)).to.equal(uriB);
+    });
+
+    it('When returning NFTs by owner should return only the NFTs of the owner', async () => {
+        const anotherAccount: SignerWithAddress = (await ethers.getSigners())[3];
+
+        await sideA.mint(sideA.address, 'uriA0', 'uriB0');
+        await sideA.mint(anotherAccount.address, 'uriA1', 'uriB1');
+        await sideA.mint(anotherAccount.address, 'uriA2', 'uriB2');
+        await sideA.mint(sideA.address, 'uriA3', 'uriB3');
+
+        let [ids] = await sideA.getAllNftsByAddress(sideA.address);
+
+        expect(ids[0]).to.equal(BigNumber.from("0"));
+        expect(ids[1]).to.equal(BigNumber.from("3"));
+
+        [ids] = await sideA.getAllNftsByAddress(anotherAccount.address);
+
+        expect(ids[0]).to.equal(BigNumber.from("1"));
+        expect(ids[1]).to.equal(BigNumber.from("2"));
+
     });
 });

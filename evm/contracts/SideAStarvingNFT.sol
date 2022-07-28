@@ -32,18 +32,39 @@ contract SideAStarvingNFT is ERC721URIStorage, Ownable {
         return newItemId;
     }
 
-    function getAllNftsByOwner(address _owner)
+    function getAllNftsByAddress(address _address)
         external
         view
-        returns (uint256[] memory ids, string[] memory uris)
+        returns (uint[] memory, string[] memory)
     {
+        uint totalTokensNum = _tokenIds.current();
         uint nextPostion;
-        for (uint256 i; i < _tokenIds.current(); i++) {
-            if (ownerOf(i) == _owner) {
+
+        uint256 addressNftsQnt = countNftsByAddress(_address);
+        uint[] memory ids = new uint[](addressNftsQnt);
+        string[] memory uris = new string[](addressNftsQnt);
+
+        for (uint i; i < totalTokensNum; i++) {
+            if (ownerOf(i) == _address) {
                 ids[nextPostion] = i;
                 uris[nextPostion] = tokenURI(i);
                 nextPostion++;
-            } 
+            }
+        }
+
+        return(ids, uris);
+    }
+
+    function countNftsByAddress(address _address)
+        view
+        private
+        returns (uint256 count)
+    {
+        uint256 totalTokensNum = _tokenIds.current();
+        for (uint256 i; i < totalTokensNum; i++) {
+            if (ownerOf(i) == _address) {
+                count++;
+            }
         }
     }
 
