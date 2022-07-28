@@ -9,21 +9,19 @@ import '@nomiclabs/hardhat-etherscan';
 dotenv.config();
 
 const ACCOUNT_ONE: any = process.env.ACCOUNT_ONE;
-const ROPSTEN_URL: any = process.env.ROPSTEN_URL;
-const ROPSTEN_ETHERSCAN_API_KEY: any = process.env.ROPSTEN_ETHERSCAN_API_KEY;
+const MUMBAI_URL: any = process.env.MUMBAI_URL;
+const POLYGON_SCAN_API_KEY: any = process.env.POLYGON_SCAN_API_KEY;
 
 const config: HardhatUserConfig = {
   solidity: "0.8.10",
   networks: {
-    ropsten: {
-      url: ROPSTEN_URL,
+    mumbai: {
+      url: MUMBAI_URL,
       accounts: [ACCOUNT_ONE]
     }
   },
   etherscan: {
-    apiKey: {
-      ropsten: ROPSTEN_ETHERSCAN_API_KEY,
-    }
+    apiKey: POLYGON_SCAN_API_KEY
   },
 };
 
