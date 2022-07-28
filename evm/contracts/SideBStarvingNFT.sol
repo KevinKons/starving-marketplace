@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 contract SideBStarvingNFT is ERC721URIStorage {
     using Counters for Counters.Counter;
     
-    event Minted(address to, uint tokenId);
+    event Mint(address to, uint tokenId);
     
     Counters.Counter private _tokenIds;
     address public sideA;
@@ -23,7 +23,7 @@ contract SideBStarvingNFT is ERC721URIStorage {
         _mint(to, newItemId);
         _setTokenURI(newItemId, tokenURI);
 
-        emit Minted(to, newItemId);
+        emit Mint(to, newItemId);
         _tokenIds.increment();
     }
 }

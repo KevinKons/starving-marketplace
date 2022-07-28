@@ -9,7 +9,7 @@ import "./SideBStarvingNFT.sol";
 contract SideAStarvingNFT is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
 
-    event Minted(address to, uint tokenId);
+    event Mint(address to, uint tokenId);
     
     Counters.Counter private _tokenIds;
     SideBStarvingNFT public sideB;
@@ -27,7 +27,7 @@ contract SideAStarvingNFT is ERC721URIStorage, Ownable {
 
         sideB.mint(to, tokenURISideB);
 
-        emit Minted(to, newItemId);
+        emit Mint(to, newItemId);
         _tokenIds.increment();
         return newItemId;
     }
