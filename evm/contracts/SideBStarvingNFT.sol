@@ -6,9 +6,11 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract SideBStarvingNFT is ERC721URIStorage {
     using Counters for Counters.Counter;
+    
+    event Minted(address to, uint tokenId);
+    
     Counters.Counter private _tokenIds;
-
-    address sideA;
+    address public sideA;
 
     constructor(address _sideA) ERC721("Starving Children Side B", "STB") {
         sideA = _sideA;
@@ -21,6 +23,7 @@ contract SideBStarvingNFT is ERC721URIStorage {
         _mint(to, newItemId);
         _setTokenURI(newItemId, tokenURI);
 
+        emit Minted(to, newItemId);
         _tokenIds.increment();
     }
 }

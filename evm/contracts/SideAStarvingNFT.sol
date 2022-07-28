@@ -8,9 +8,11 @@ import "./SideBStarvingNFT.sol";
 
 contract SideAStarvingNFT is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
+
+    event Minted(address to, uint tokenId);
     
     Counters.Counter private _tokenIds;
-    SideBStarvingNFT sideB;
+    SideBStarvingNFT public sideB;
 
     constructor() ERC721("Starving Children Side A", "STA") {}
 
@@ -25,6 +27,7 @@ contract SideAStarvingNFT is ERC721URIStorage, Ownable {
 
         sideB.mint(to, tokenURISideB);
 
+        emit Minted(to, newItemId);
         _tokenIds.increment();
         return newItemId;
     }
