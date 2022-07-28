@@ -6,29 +6,51 @@ import ListNFT from './ListNFT';
 
 class Application extends Nullstack {
 
-  prepare({ page }) {
-    page.locale = 'en-US';
+  connected = false;
+  userAddress = "empty";
+  tapsBalance = 0;
+
+  async hydrate() {
+    const account = (await window.ethereum.request({ method: 'eth_accounts'}))[0];
+    if (account) {
+      this.connected = true;
+      this.userAddress = account;
+    }
   }
 
-  renderHead() {
-    return (
-      <head>
-        <link
-          href="https://fonts.gstatic.com" rel="preconnect" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Crete+Round&family=Roboto&display=swap"
-          rel="stylesheet" />
-        <link href="/dist/output.css" rel="stylesheet"></link>
-      </head>
-    )
+  async requestAccount() {
+    if (window.ethereum) {
+      try {
+        const accounts = await window.ethereum.request({
+          method: 'eth_requestAccounts'
+        });
+        this.userAddress = accounts[0];
+        this.connected = true;
+      } catch (error) {
+        console.log('Error connecting');
+      }
+    } else {
+      console.log('Not Detected');
+    }
   }
 
   render() {
     return (
-      <main class='bg-blue-500 h-screen'>
-        {/* <Head /> */}
-        {/* <Home route="/" /> */}
-        <section class='bg-red-500 flex flex-col items-center'>
+      <main class='bg-blue-100 h-screen'>
+        {
+          this.connected ? (
+            <div>{this.userAddress}</div> 
+          )  
+          : (
+            <button
+              onclick={this.requestAccount}
+              class='bg-blue-500 w-32 border'
+            >
+              Connect Wallet
+            </button>
+        )}
+        
+        <section class='flex flex-col items-center'>
           <ListNFT />
         </section>
       </main>
