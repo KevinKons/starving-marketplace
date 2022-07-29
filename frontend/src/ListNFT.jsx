@@ -18,7 +18,11 @@ class ListNFT extends Nullstack {
 
   render({ project }) {
     return (
-      <div class='w-9/12 h-96 flex justify-between space-x-10'>
+      <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        <CardNFT />
+        <CardNFT />
+        <CardNFT />
+        <CardNFT />
         <CardNFT />
       </div>
     )

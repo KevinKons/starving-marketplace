@@ -11,7 +11,7 @@ class Application extends Nullstack {
   tapsBalance = 0;
 
   async hydrate() {
-    const account = (await window.ethereum.request({ method: 'eth_accounts'}))[0];
+    const account = (await window.ethereum.request({ method: 'eth_accounts' }))[0];
     if (account) {
       this.connected = true;
       this.userAddress = account;
@@ -36,20 +36,20 @@ class Application extends Nullstack {
 
   render() {
     return (
-      <main class='bg-blue-100 h-screen'>
+      <main class='bg-red-400 h-screen'>
         {
           this.connected ? (
-            <div>{this.userAddress}</div> 
-          )  
-          : (
-            <button
-              onclick={this.requestAccount}
-              class='bg-blue-500 w-32 border'
-            >
-              Connect Wallet
-            </button>
-        )}
-        
+            <div>{this.userAddress}</div>
+          )
+            : (
+              <button
+                onclick={this.requestAccount}
+                class='bg-blue-500 w-32 border'
+              >
+                Connect Wallet
+              </button>
+            )}
+
         <section class='flex flex-col items-center'>
           <ListNFT />
         </section>

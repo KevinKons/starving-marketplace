@@ -17,12 +17,20 @@ class CardNFT extends Nullstack {
 
   render({ project }) {
     return (
-      <div class='bg-black flex-grow border-2 border-white p-1 text-white max-w-xs'>
-        <img src="pexels-christian-tchouankam-juengue.jpeg" class='h-64' />
-        <div>NFT name</div>
-        <div>Creator name</div>
-        <div>Price</div>
-        <div>0.49</div>
+      <div class="group relative bg-black border-2 border-white p-2">
+        <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
+          <img src="pexels-christian-tchouankam-juengue.jpeg" class="w-full h-full object-center object-cover lg:w-full lg:h-full" />
+        </div>
+        <div class="mt-4 flex flex-col justify-between text-white">
+          <div class="text-lg">NFT name</div>
+          <div class="text-xs">Creator name</div>
+          <br />
+          <div class="text-xs">Price</div>
+          <div class="flex space-x-1">
+            <img src="tap-symbol.png" />
+            <div class="text-lg font-extrabold">0.49</div>
+          </div>
+        </div>
       </div>
     )
   }
