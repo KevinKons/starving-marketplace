@@ -1,8 +1,8 @@
 import Nullstack from 'nullstack';
-// import './Application.css';
 import "./tailwind.css";
-import Home from './Home';
-import ListNFT from './ListNFT';
+// import Home from './Home';
+import ExplorePage from './ExplorePage';
+import CreateNFTPage from './CreateNFTPage';
 
 class Application extends Nullstack {
 
@@ -41,18 +41,19 @@ class Application extends Nullstack {
           this.connected ? (
             <div>{this.userAddress}</div>
           )
-            : (
+            :
+            (
               <button
                 onclick={this.requestAccount}
                 class='bg-blue-500 w-32 border'
               >
                 Connect Wallet
               </button>
-            )}
+            )
+        }
+        <ExplorePage route='/'/>
+        <CreateNFTPage route='/create'/>
 
-        <section class='flex flex-col items-center'>
-          <ListNFT />
-        </section>
       </main>
     )
   }
