@@ -1,7 +1,10 @@
 import Nullstack from 'nullstack';
-// import * as dotenv from 'dotenv';
 import axios from 'axios';
+import { ethers } from "ethers";
 
+import { abi as SIDE_A_ABI } from "../public/SideAStarvingNFT.json";
+
+// import * as dotenv from 'dotenv';
 // dotenv.config();
 
 class CreateNFTPage extends Nullstack {
@@ -18,14 +21,6 @@ class CreateNFTPage extends Nullstack {
   externalLinkSideB = '';
   descriptionSideA = '';
   descriptionSideB = '';
-
-  async see() {
-    console.log('file', window.document.getElementById('file-A-input').files[0]);
-    // axios
-    //   .get("https://gateway.pinata.cloud/ipfs/QmQwfiCRHYXiWXjt6cYvb8npjtep9S1JARHnDfE5pngSZs")
-    //   .then(r => console.log("r", r))
-    // console.log('Hey')
-  }
 
   uploadFileA() {
     window.document.getElementById(`file-A-input`).click();
@@ -53,8 +48,7 @@ class CreateNFTPage extends Nullstack {
     return `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`;
   }
 
-  async onCreateNFT() {
-    console.log('Submiting');
+  async onCreateNFT({userAddress}) {
     const urlFileSideA = await this.pinFileToIPFS({ side: 'A' });
     const urlFileSideB = await this.pinFileToIPFS({ side: 'B' });
     
@@ -74,15 +68,17 @@ class CreateNFTPage extends Nullstack {
 
     const jsonUrlSideA = await this.pinJsonToIPFS({ json: sideAJson });
     const jsonUrlSideB = await this.pinJsonToIPFS({ json: sideBJson });
-    console.log('jsonUrlSideA', jsonUrlSideA);
-    console.log('jsonUrlSideB', jsonUrlSideB);
+  
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const sideAContract = new ethers.Contract('0x5C5FfD6b61AF9C97F679b645Df278B5B36c4c049', SIDE_A_ABI, provider);
 
+    const sideAContractWithSigner = sideAContract.connect(provider.getSigner());
+    const transaction = await sideAContractWithSigner.mint(userAddress, jsonUrlSideA, jsonUrlSideB);
   }
 
   render() {
     return (
       <div class="md:grid md:grid-cols-2 md:gap-6 bg-black text-white">
-        {}
         <div class="mt-5 md:mt-0 md:col-span-1">
           <div>
             <div class="shadow sm:rounded-md sm:overflow-hidden">
@@ -168,18 +164,6 @@ class CreateNFTPage extends Nullstack {
             Create NFT
           </button>
         </div>
-
-
-        {/*
-        <input type='file' id='file-input' onsubmit={(event) => console.log("submited", event)} />
-        <button onclick={this.uploadFile} class='bg-blue-300 border-2'>Upload</button>
-        <br />
-        <button onclick={this.getValue} class='bg-blue-300 border-2'>Value</button>
-        <br />
-        <br />
-        <button onclick={this.create} class='text-yellow-100'>Create x</button>
-        <br />
-        <br />*/}
       </div >
     )
   }
