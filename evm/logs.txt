@@ -1,11 +1,10 @@
 Deploying SideAStarvingNFT...
-Contract deployed at: 0x5C5FfD6b61AF9C97F679b645Df278B5B36c4c049
+Contract deployed at: 0xBD62eF39e6d0952CbF01Cb747f98BF9C9F797509
 Deploying SideBStarvingNFT...
-Contract deployed at: 0xb90937b2D082633306951770B569E0886bf39d83
+Contract deployed at: 0x1930b644b77475FD3f600552Ea0044Ff310060e0
 Seting B side on A side...
-Done in 31.67s.
 
 
 
 
-yarn hardhat verify --network mumbai --show-stack-traces 0xb90937b2D082633306951770B569E0886bf39d83
+yarn hardhat verify --network mumbai --show-stack-traces 0x1930b644b77475FD3f600552Ea0044Ff310060e0
