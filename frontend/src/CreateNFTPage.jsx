@@ -6,29 +6,18 @@ import axios from 'axios';
 
 class CreateNFTPage extends Nullstack {
 
-  pinataUrl = 'https://api.pinata.cloud/pinning/pinJSONToIPFS';
+  pinataUrl = 'https://api.pinata.cloud/pinning';
+  headers = {
+    pinata_api_key: "78595d21bceb6ce847cb",
+    pinata_secret_api_key: "2e22599f566abf5c8fd8f8a43a36a350632b0d9d0ceeaf9caa289e3dac38ab1b",
+  }
+
   nameSideA = '';
   nameSideB = '';
   externalLinkSideA = '';
   externalLinkSideB = '';
   descriptionSideA = '';
   descriptionSideB = '';
-
-  async create() {
-    const json = {
-      name: "test",
-      url: "url"
-    }
-    axios
-      .post(url, json, {
-        headers: {
-          pinata_api_key: "78595d21bceb6ce847cb",
-          pinata_secret_api_key: "2e22599f566abf5c8fd8f8a43a36a350632b0d9d0ceeaf9caa289e3dac38ab1b",
-        }
-      })
-      .then(r => console.log("successs", r))
-      .catch(error => console.log("error", error))
-  }
 
   async see() {
     console.log('file', window.document.getElementById('file-A-input').files[0]);
@@ -39,7 +28,6 @@ class CreateNFTPage extends Nullstack {
   }
 
   uploadFileA() {
-    console.log('CLicked')
     window.document.getElementById(`file-A-input`).click();
   }
 
@@ -47,34 +35,52 @@ class CreateNFTPage extends Nullstack {
     window.document.getElementById(`file-B-input`).click();
   }
 
-  getValue() {
+  async pinFileToIPFS({ side }) {
+    const file = window.document.getElementById(`file-${side}-input`).files[0];
     const formData = new FormData();
-    const file = window.document.getElementById('file-A-input').files[0]
-    console.log(file);
     formData.append('file', file);
-    const endpoint = "https://api.pinata.cloud/pinning/pinFileToIPFS";
-    fetch(endpoint, {
-      method: 'post',
-      body: formData,
-      headers: {
-        pinata_api_key: "78595d21bceb6ce847cb",
-        pinata_secret_api_key: "2e22599f566abf5c8fd8f8a43a36a350632b0d9d0ceeaf9caa289e3dac38ab1b",
-      }
-    })
-      .then(r => console.log('success', r))
-      .catch(r => console.log('failure', r));
 
-    // https://api.pinata.cloud/pinning/pinFileToIPFS
-    // fetch("https://gateway.pinata.cloud/ipfs/QmdkYfjs8dKm9xY6hc41Mc4k3PAhKru1kxnsa2V8a319c5", {method: 'GET'});
+    const url = `${this.pinataUrl}/pinFileToIPFS`;
+    const headers = this.headers;
+    const response = await axios.post(url, formData, { headers });
+    return `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`;
+  }
+
+  async pinJsonToIPFS({ json }) {
+    const url = `${this.pinataUrl}/pinJsonToIPFS`;
+    const headers = this.headers;
+    const response = await axios.post(url, json, { headers });
+    return `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`;
   }
 
   async onCreateNFT() {
-    console.log('Submiting')
+    console.log('Submiting');
+    const urlFileSideA = await this.pinFileToIPFS({ side: 'A' });
+    // const urlFileSideB = await this.pinFileToIPFS({ side: 'B' });
+    
+    const sideAJson = {
+      name: this.nameSideA,
+      externalLink: this.externalLinkSideA,
+      description: this.descriptionSideA,
+      image: urlFileSideA
+    }
+
+    // const sideBJson = {
+    //   name: this.nameSideB,
+    //   externalLink: this.externalLinkSideB,
+    //   description: this.descriptionSideB,
+    //   image: urlFileSideB
+    // }
+
+    const jsonUrlSideA = await this.pinJsonToIPFS({ json: sideAJson });
+    console.log('jsonUrlSideA', jsonUrlSideA);
+
   }
 
   render() {
     return (
       <div class="md:grid md:grid-cols-2 md:gap-6 bg-black text-white">
+        {}
         <div class="mt-5 md:mt-0 md:col-span-1">
           <div>
             <div class="shadow sm:rounded-md sm:overflow-hidden">
