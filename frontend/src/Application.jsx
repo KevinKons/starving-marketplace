@@ -5,16 +5,12 @@ import ExplorePage from './ExplorePage';
 import CreateNFTPage from './CreateNFTPage';
 
 class Application extends Nullstack {
-
-  connected = false;
-  userAddress = "empty";
-  tapsBalance = 0;
-
-  async hydrate() {
+  
+  async hydrate(context) {
     const account = (await window.ethereum.request({ method: 'eth_accounts' }))[0];
     if (account) {
-      this.connected = true;
-      this.userAddress = account;
+      context.connected = true;
+      context.userAddress = account;
     }
   }
 
@@ -24,8 +20,8 @@ class Application extends Nullstack {
         const accounts = await window.ethereum.request({
           method: 'eth_requestAccounts'
         });
-        this.userAddress = accounts[0];
-        this.connected = true;
+        context.userAddress = accounts[0];
+        context.connected = true;
       } catch (error) {
         console.log('Error connecting');
       }
@@ -34,12 +30,12 @@ class Application extends Nullstack {
     }
   }
 
-  render() {
+  render({ userAddress, connected}) {
     return (
       <main class='bg-red-400 h-screen'>
         {
-          this.connected ? (
-            <div>{this.userAddress}</div>
+          connected ? (
+            <div>{userAddress}</div>
           )
             :
             (
@@ -53,7 +49,6 @@ class Application extends Nullstack {
         }
         <ExplorePage route='/'/>
         <CreateNFTPage route='/create'/>
-
       </main>
     )
   }
