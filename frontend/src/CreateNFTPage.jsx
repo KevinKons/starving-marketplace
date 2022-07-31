@@ -56,7 +56,7 @@ class CreateNFTPage extends Nullstack {
   async onCreateNFT() {
     console.log('Submiting');
     const urlFileSideA = await this.pinFileToIPFS({ side: 'A' });
-    // const urlFileSideB = await this.pinFileToIPFS({ side: 'B' });
+    const urlFileSideB = await this.pinFileToIPFS({ side: 'B' });
     
     const sideAJson = {
       name: this.nameSideA,
@@ -65,15 +65,17 @@ class CreateNFTPage extends Nullstack {
       image: urlFileSideA
     }
 
-    // const sideBJson = {
-    //   name: this.nameSideB,
-    //   externalLink: this.externalLinkSideB,
-    //   description: this.descriptionSideB,
-    //   image: urlFileSideB
-    // }
+    const sideBJson = {
+      name: this.nameSideB,
+      externalLink: this.externalLinkSideB,
+      description: this.descriptionSideB,
+      image: urlFileSideB
+    }
 
     const jsonUrlSideA = await this.pinJsonToIPFS({ json: sideAJson });
+    const jsonUrlSideB = await this.pinJsonToIPFS({ json: sideBJson });
     console.log('jsonUrlSideA', jsonUrlSideA);
+    console.log('jsonUrlSideB', jsonUrlSideB);
 
   }
 
