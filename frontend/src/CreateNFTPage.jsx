@@ -98,17 +98,17 @@ class CreateNFTPage extends Nullstack {
                 </div>
 
                 <div class="col-span-6 sm:col-span-3 text-base">
-                  <label for="first-name" class="block text-sm">Name *</label>
+                  <label class="block text-sm">Name *</label>
                   <input bind={this.nameSideA} value={this.nameSideA} class="mt-1 block w-full sm:text-sm bg-black border border-white h-10" />
                 </div>
 
                 <div class="col-span-6 sm:col-span-3 text-base">
-                  <label for="first-name" class="block text-sm ">External link</label>
+                  <label class="block text-sm ">External link</label>
                   <input bind={this.externalLinkSideA} value={this.externalLinkSideA} class="mt-1 block w-full sm:text-sm bg-black border border-white h-10" />
                 </div>
 
                 <div>
-                  <label for="about" class="block text-sm mb-1"> Description </label>
+                  <label class="block text-sm mb-1"> Description </label>
                   <p class='text-gray-400 text-sm mb-4'>The description will be included on the item's detail page underneath its image. Markdown syntax is supported.</p>
                   <div class="mt-1">
                     <textarea bind={this.descriptionSideA} value={this.descriptionSideA} class="mt-1 block w-full sm:text-sm bg-black h-32 border border-white" />
@@ -138,17 +138,17 @@ class CreateNFTPage extends Nullstack {
                 </div>
 
                 <div class="col-span-6 sm:col-span-3 text-base">
-                  <label for="first-name" class="block text-sm">Name *</label>
+                  <label class="block text-sm">Name *</label>
                   <input bind={this.nameSideB} value={this.nameSideB} class="mt-1 block w-full sm:text-sm bg-black border border-white h-10" />
                 </div>
 
                 <div class="col-span-6 sm:col-span-3 text-base">
-                  <label for="first-name" class="block text-sm ">External link</label>
+                  <label class="block text-sm ">External link</label>
                   <input bind={this.externalLinkSideB} value={this.externalLinkSideB} class="mt-1 block w-full sm:text-sm bg-black border border-white h-10" />
                 </div>
 
                 <div>
-                  <label for="about" class="block text-sm mb-1"> Description </label>
+                  <label class="block text-sm mb-1"> Description </label>
                   <p class='text-gray-400 text-sm mb-4'>The description will be included on the item's detail page underneath its image. Markdown syntax is supported.</p>
                   <div class="mt-1">
                     <textarea bind={this.descriptionSideB} value={this.descriptionSideB} class="mt-1 block w-full sm:text-sm bg-black h-32 border border-white" />
