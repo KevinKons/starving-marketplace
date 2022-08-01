@@ -5,6 +5,8 @@ import UserInfoMenu from './UserInfoMenu';
 import Navbar from './Navbar';
 import TapsPage from './TapsPage';
 
+// import './tailwind.css'
+
 class Application extends Nullstack {
 
   async hydrate(context) {
@@ -23,7 +25,7 @@ class Application extends Nullstack {
 
         <div class='flex justify-center'>
           <div class='max-w-7xl'>
-            <ExplorePage route='/explore' class='' />
+            <ExplorePage route='/explore' />
             <CreateNFTPage route='/create' />
             <TapsPage route='/taps' />
           </div>
