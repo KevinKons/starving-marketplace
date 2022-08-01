@@ -3,6 +3,7 @@ import ExplorePage from './ExplorePage';
 import CreateNFTPage from './CreateNFTPage';
 import UserInfoMenu from './UserInfoMenu';
 import Navbar from './Navbar';
+import TapsPage from './TapsPage';
 
 class Application extends Nullstack {
 
@@ -24,6 +25,7 @@ class Application extends Nullstack {
           <div class='max-w-7xl'>
             <ExplorePage route='/explore' class='' />
             <CreateNFTPage route='/create' />
+            <TapsPage route='/taps' />
           </div>
         </div>
 
