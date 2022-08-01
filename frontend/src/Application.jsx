@@ -22,7 +22,7 @@ class Application extends Nullstack {
 
         <div class='flex justify-center'>
           <div class='max-w-7xl'>
-            <ExplorePage route='/' class='' />
+            <ExplorePage route='/explore' class='' />
             <CreateNFTPage route='/create' />
           </div>
         </div>
