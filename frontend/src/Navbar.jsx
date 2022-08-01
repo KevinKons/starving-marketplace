@@ -14,13 +14,13 @@ class Navbar extends Nullstack {
               </div>
               <div class="hidden sm:block sm:ml-6">
                 <div class="flex space-x-4">
-                  <a href="#" class="px-3 py-2 text-sm font-semibold">Home</a>
+                  <a href="/home" class="px-3 py-2 text-sm font-semibold">Home</a>
 
-                  <a href="#" class="px-3 py-2 text-sm font-normal">WTF?</a>
+                  <a href="/wtf" class="px-3 py-2 text-sm font-normal">WTF?</a>
 
-                  <a href="#" class="px-3 py-2 text-sm font-normal">Explore</a>
+                  <a href="/explore" class="px-3 py-2 text-sm font-normal">Explore</a>
 
-                  <a href="#" class="px-3 py-2 text-sm font-normal">TAPs</a>
+                  <a href="/taps" class="px-3 py-2 text-sm font-normal">TAPs</a>
                 </div>
               </div>
             </div>
