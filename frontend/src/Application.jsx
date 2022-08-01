@@ -2,11 +2,15 @@ import Nullstack from 'nullstack';
 // import Home from './Home';
 import ExplorePage from './ExplorePage';
 import CreateNFTPage from './CreateNFTPage';
+import UserInfoMenu from './UserInfoMenu';
+import Navbar from './Navbar';
 
 import "./tailwind.css";
-import './Application.css';
 
 class Application extends Nullstack {
+
+  connected = false
+  userAddress = ''
 
   async hydrate(context) {
     const account = (await window.ethereum.request({ method: 'eth_accounts' }))[0];
@@ -16,71 +20,19 @@ class Application extends Nullstack {
     }
   }
 
-  async requestAccount() {
-    if (window.ethereum) {
-      try {
-        const accounts = await window.ethereum.request({
-          method: 'eth_requestAccounts'
-        });
-        context.userAddress = accounts[0];
-        context.connected = true;
-      } catch (error) {
-        console.log('Error connecting');
-      }
-    } else {
-      console.log('Not Detected');
-    }
-  }
-
-  render({ userAddress, connected }) {
+  render() {
     return (
-      <main class='bg-red-400 h-screen'>
-        <nav class="text-white">
-          <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-            <div class="relative flex items-center justify-between h-16">
-              <div class="flex-1 flex justify-between items-center">
-                <div>
-                  <div class='logo1'>NFTS FOR</div>
-                  <div>STARVING</div>
-                  <div>CHILDREN</div>
-                </div>
-                <div class="hidden sm:block sm:ml-6">
-                  <div class="flex space-x-4">
-                    <a href="#" class="px-3 py-2 text-sm font-semibold">Home</a>
+      <main class='bg-red-900 h-screen'>
+        <UserInfoMenu />
+        <Navbar />
 
-                    <a href="#" class="px-3 py-2 text-sm font-normal">WTF?</a>
-
-                    <a href="#" class="px-3 py-2 text-sm font-normal">Explore</a>
-
-                    <a href="#" class="px-3 py-2 text-sm font-normal">TAPs</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class='flex justify-center'>
+          <div class='max-w-7xl'>
+            <ExplorePage route='/' class='' />
+            <CreateNFTPage route='/create' />
           </div>
-        </nav>
-
-
-
-
-
-
-        {
-          connected ? (
-            <div>{userAddress}</div>
-          )
-            :
-            (
-              <button
-                onclick={this.requestAccount}
-                class='bg-blue-500 w-32 border'
-              >
-                Connect Wallet
-              </button>
-            )
-        }
-        <ExplorePage route='/' />
-        <CreateNFTPage route='/create' />
+        </div>
+        
       </main>
     )
   }
