@@ -1,4 +1,5 @@
 import Nullstack from 'nullstack';
+import axios from 'axios';
 import { ethers } from 'ethers';
 
 import { abi as SIDE_A_ABI } from "../public/SideAStarvingNFT.json";
@@ -10,20 +11,22 @@ class ExplorePage extends Nullstack {
 
   nftsForSale = [];
 
-  async hydrate(context) {
+  async hydrate() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const sideAContract = new ethers.Contract('0x5C5FfD6b61AF9C97F679b645Df278B5B36c4c049', SIDE_A_ABI, provider);
-    const result = await sideAContract.getAllNftsByAddress('0x5C5FfD6b61AF9C97F679b645Df278B5B36c4c049');
-    console.log(result)
+    const sideAContract = new ethers.Contract('0xBD62eF39e6d0952CbF01Cb747f98BF9C9F797509', SIDE_A_ABI, provider);
+    const [, nftsUrlArray ] = await sideAContract.getAllNftsByAddress('0x0216fa489606D6c1862072aa9416Db4c56524B33');
+    console.log(nftsUrlArray)
 
-    // console.log("array1", array1[0])
-    // context.nftsForSale = array1[0].toNumber();
+    nftsUrlArray.forEach(async url => {
+      const nftInfo = (await axios.get(url)).data;
+      this.nftsForSale.push(nftInfo)
+    });
   }
 
-  render({ nftsForSale }) {
+  render() {
     return (
       <section class='flex flex-col items-center text-black'>
-        <ListNFT />
+        <ListNFT nfts={this.nftsForSale}/>
       </section>
     )
   }

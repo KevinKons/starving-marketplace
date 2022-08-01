@@ -70,7 +70,7 @@ class CreateNFTPage extends Nullstack {
     const jsonUrlSideB = await this.pinJsonToIPFS({ json: sideBJson });
   
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const sideAContract = new ethers.Contract('0x5C5FfD6b61AF9C97F679b645Df278B5B36c4c049', SIDE_A_ABI, provider);
+    const sideAContract = new ethers.Contract('0xBD62eF39e6d0952CbF01Cb747f98BF9C9F797509', SIDE_A_ABI, provider);
 
     const sideAContractWithSigner = sideAContract.connect(provider.getSigner());
     const transaction = await sideAContractWithSigner.mint(userAddress, jsonUrlSideA, jsonUrlSideB);
