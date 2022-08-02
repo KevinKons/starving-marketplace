@@ -11,8 +11,7 @@ class UserInfoMenu extends Nullstack {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const tapToken = new ethers.Contract('0x48c366D25dEC0B19f367aFf0869e9869E095c0F9', TAP_ABI, provider);
     const balance = (await tapToken.balanceOf(userAddress)).toString();
-    this.balance = balance;
-
+    this.balance = Number(`${balance.slice(0, balance.length - 18)}.${balance.slice(balance.length - 18)}`);
   }
 
   async requestAccount() {
