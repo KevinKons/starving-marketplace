@@ -9,7 +9,7 @@ class UserInfoMenu extends Nullstack {
 
   async hydrate({ userAddress }) {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const tapToken = new ethers.Contract('0x7F0a54e183af9e839DD4D48988690B47a3192c37', TAP_ABI, provider);
+    const tapToken = new ethers.Contract('0x48c366D25dEC0B19f367aFf0869e9869E095c0F9', TAP_ABI, provider);
     const balance = (await tapToken.balanceOf(userAddress)).toString();
     this.balance = balance;
 
