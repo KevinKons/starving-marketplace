@@ -1,18 +1,33 @@
 import Nullstack from 'nullstack';
+import { BigNumber, ethers } from 'ethers';
+
+import { abi as TAP_ABI } from "../public/Tap.json";
 
 class TapsPage extends Nullstack {
 
   tapValue = 0;
   maticValue = 0;
 
-  updateTapValue({event}) {
+  updateTapValue({ event }) {
     this.tapValue = event.target.value;
     this.maticValue = event.target.value * 2;
   }
 
-  updateMaticValue({event}) {
+  updateMaticValue({ event }) {
     this.maticValue = event.target.value;
     this.tapValue = event.target.value / 2;
+  }
+
+  async buy() {
+    console.log('Buying...')
+
+    if (this.maticValue > 0) {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const tapToken = new ethers.Contract('0x7F0a54e183af9e839DD4D48988690B47a3192c37', TAP_ABI, provider);
+      const tapTokenWithSigner = tapToken.connect(provider.getSigner());
+
+      tapTokenWithSigner.buy({ value: Number(this.maticValue) });
+    }
   }
 
   render() {
@@ -45,8 +60,8 @@ class TapsPage extends Nullstack {
           </div>
 
           <div class='flex justify-center'>
-            <button class='font-bold text-black bg-yellow-400 hover:bg-yellow-500 w-52 h-11'>
-              Connect your wallet
+            <button onclick={this.buy} class='font-bold text-black bg-yellow-400 hover:bg-yellow-500 w-52 h-11'>
+              Buy TAP Token
             </button>
           </div>
 
