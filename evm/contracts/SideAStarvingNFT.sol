@@ -5,6 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "./SideBStarvingNFT.sol";
+import "./Tap.sol";
 
 contract SideAStarvingNFT is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
@@ -13,8 +14,13 @@ contract SideAStarvingNFT is ERC721URIStorage, Ownable {
 
     Counters.Counter private _tokenIds;
     SideBStarvingNFT public sideB;
+    Tap public tapToken;
 
-    constructor() ERC721("Starving Children Side A", "STA") {}
+    uint constant initialTokenValue = 0.49 ether;
+
+    constructor(Tap _tapToken) ERC721("Starving Children Side A", "STA") {
+        tapToken = _tapToken;
+    }
 
     function mint(
         address to,
@@ -30,6 +36,12 @@ contract SideAStarvingNFT is ERC721URIStorage, Ownable {
         emit Mint(to, newItemId);
         _tokenIds.increment();
         return newItemId;
+    }
+
+    function buy(uint id) external {
+        require(tapToken.allowance(msg.sender, address(this)) <= initialTokenValue, 'Not enough allowance');
+        tapToken.transferFrom(msg.sender, address(this), initialTokenValue);
+        super.transferFrom(address(this), msg.sender, id);
     }
 
     function getAllNftsByAddress(address _address)
