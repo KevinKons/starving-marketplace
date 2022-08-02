@@ -8,6 +8,11 @@ contract Tap is ERC20("TAP", "TAP"), Ownable {
     uint constant maxSupply = 20000000000;
     uint public currentSupply;
 
+    event Buy (
+        address indexed buyer,
+        uint amount
+    );
+
     constructor() {}
 
     modifier underMaxSupply(uint amount) {
@@ -21,12 +26,13 @@ contract Tap is ERC20("TAP", "TAP"), Ownable {
         _mint(to, amount);
     }
 
-    function buy(address buyer) payable external underMaxSupply(msg.value / 2) {
+    function buy() payable external underMaxSupply(msg.value / 2) {
         require(msg.value > 0, 'No value received');
         uint taps = msg.value / 2;
 
         currentSupply += taps;
 
-        _mint(buyer, taps);
+        _mint(msg.sender, taps);
+        emit Buy(msg.sender, taps);
     }
 }
