@@ -1,6 +1,19 @@
 import Nullstack from 'nullstack';
+import { ethers } from 'ethers';
+
+import { abi as TAP_ABI } from "../public/Tap.json";
 
 class UserInfoMenu extends Nullstack {
+
+  balance = 0;
+
+  async hydrate({ userAddress }) {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const tapToken = new ethers.Contract('0x7F0a54e183af9e839DD4D48988690B47a3192c37', TAP_ABI, provider);
+    const balance = (await tapToken.balanceOf(userAddress)).toString();
+    this.balance = balance;
+
+  }
 
   async requestAccount() {
     if (window.ethereum) {
@@ -26,7 +39,7 @@ class UserInfoMenu extends Nullstack {
             <div class='flex justify-center items-center'>
               <img class='h-6 mr-4' src="tap-symbol.png" />
               <div>
-                <div class='text-lg'>1.345 TAP</div>
+                <div class='text-lg'>{`${this.balance} TAP`}</div>
                 <div class='text-sm text-gray-300'>{`${userAddress.substr(0, 7)}...${userAddress.substr(userAddress.length - 6)}`}</div>
               </div>
             </div>
