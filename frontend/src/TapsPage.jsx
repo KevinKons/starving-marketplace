@@ -18,15 +18,38 @@ class TapsPage extends Nullstack {
     this.tapValue = event.target.value / 2;
   }
 
+  countDecimals({ value }) {
+    const numStr = String(value);
+    if (numStr.includes('.')) {
+      return numStr.split('.')[1].length;
+    };
+    return 0;
+  }
+
+  convertIntoGwei({ value }) {
+    const decimalsCount = this.countDecimals({ value: value })
+    const decimalsToAdd = 18 - decimalsCount;
+    let numberWithoutDot = String(Math.floor(value));
+    if (String(value).includes('.')) {
+      numberWithoutDot = numberWithoutDot.concat(value.split('.')[1]);
+    } 
+
+    for (var i = 0; i < decimalsToAdd; i++) {
+      numberWithoutDot = numberWithoutDot.concat('0');
+    }
+
+    return numberWithoutDot;
+  }
+
   async buy() {
-    console.log('Buying...')
+    const value = this.convertIntoGwei({ value: this.maticValue });
 
     if (this.maticValue > 0) {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const tapToken = new ethers.Contract('0x7F0a54e183af9e839DD4D48988690B47a3192c37', TAP_ABI, provider);
+      const tapToken = new ethers.Contract('0x48c366D25dEC0B19f367aFf0869e9869E095c0F9', TAP_ABI, provider);
       const tapTokenWithSigner = tapToken.connect(provider.getSigner());
 
-      tapTokenWithSigner.buy({ value: Number(this.maticValue) });
+      tapTokenWithSigner.buy({ value: value });
     }
   }
 
