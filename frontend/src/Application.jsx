@@ -29,7 +29,7 @@ class Application extends Nullstack {
             <ExplorePage route='/explore' />
             <CreateNFTPage route='/create' />
             <TapsPage route='/taps' />
-            <NFTDetailPage rout='/nft' />
+            <NFTDetailPage route='/explore/:nftid' />
           </div>
         </div>
 
