@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Tap is ERC20("TAP", "TAP"), Ownable {
-    uint constant maxSupply = 20000000000;
+    uint constant maxSupply = 20000000000 ether;
     uint public currentSupply;
 
     event Buy (
