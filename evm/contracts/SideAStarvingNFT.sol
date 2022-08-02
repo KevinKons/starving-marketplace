@@ -39,11 +39,10 @@ contract SideAStarvingNFT is ERC721URIStorage, Ownable {
     }
 
     function buy(uint id) external {
-        require(tapToken.allowance(msg.sender, address(this)) <= initialTokenValue, 'Not enough allowance');
         tapToken.transferFrom(msg.sender, address(this), initialTokenValue);
-        super.transferFrom(address(this), msg.sender, id);
+        _transfer(address(this), msg.sender, id);
     }
-
+    
     function getAllNftsByAddress(address _address)
         external
         view
