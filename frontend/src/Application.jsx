@@ -5,6 +5,7 @@ import UserInfoMenu from './UserInfoMenu';
 import Navbar from './Navbar';
 import TapsPage from './TapsPage';
 import NFTDetailPage from './NFTDetailPage';
+import PublicProfilePage from './PublicProfilePage';
 
 // import './tailwind.css'
 
@@ -35,6 +36,7 @@ class Application extends Nullstack {
             <CreateNFTPage route='/create' />
             <TapsPage route='/taps' />
             <NFTDetailPage route='/explore/:nftid' />
+            <PublicProfilePage route='/user/:address' />
           </div>
         </div>
 
