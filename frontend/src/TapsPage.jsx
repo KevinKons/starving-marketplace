@@ -41,12 +41,12 @@ class TapsPage extends Nullstack {
     return numberWithoutDot;
   }
 
-  async buy() {
+  async buy({ tapTokenAddress }) {
     const value = this.convertIntoGwei({ value: this.maticValue });
 
     if (this.maticValue > 0) {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const tapToken = new ethers.Contract('0x48c366D25dEC0B19f367aFf0869e9869E095c0F9', TAP_ABI, provider);
+      const tapToken = new ethers.Contract(tapTokenAddress, TAP_ABI, provider);
       const tapTokenWithSigner = tapToken.connect(provider.getSigner());
 
       tapTokenWithSigner.buy({ value: value });

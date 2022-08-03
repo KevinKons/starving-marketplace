@@ -10,6 +10,11 @@ import NFTDetailPage from './NFTDetailPage';
 
 class Application extends Nullstack {
 
+  initiate(context) {
+    context.tapTokenAddress = '0x48c366D25dEC0B19f367aFf0869e9869E095c0F9';
+    context.sideAAddress = '0xF8A994283ce417735383cc682698B0EfD117E21c';
+  }
+
   async hydrate(context) {
     const account = (await window.ethereum.request({ method: 'eth_accounts' }))[0];
     if (account) {

@@ -48,7 +48,7 @@ class CreateNFTPage extends Nullstack {
     return `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`;
   }
 
-  async onCreateNFT({userAddress}) {
+  async onCreateNFT({ userAddress, sideAAddress }) {
     const urlFileSideA = await this.pinFileToIPFS({ side: 'A' });
     const urlFileSideB = await this.pinFileToIPFS({ side: 'B' });
     
@@ -70,10 +70,10 @@ class CreateNFTPage extends Nullstack {
     const jsonUrlSideB = await this.pinJsonToIPFS({ json: sideBJson });
   
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const sideAContract = new ethers.Contract('0xBD62eF39e6d0952CbF01Cb747f98BF9C9F797509', SIDE_A_ABI, provider);
+    const sideAContract = new ethers.Contract(sideAAddress, SIDE_A_ABI, provider);
 
     const sideAContractWithSigner = sideAContract.connect(provider.getSigner());
-    const transaction = await sideAContractWithSigner.mint(userAddress, jsonUrlSideA, jsonUrlSideB);
+    const transaction = await sideAContractWithSigner.mint(sideAAddress, jsonUrlSideA, jsonUrlSideB);
   }
 
   render() {

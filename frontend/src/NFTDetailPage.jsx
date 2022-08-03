@@ -8,9 +8,9 @@ class NFTDetailPage extends Nullstack {
 
   nft = {};
 
-  async hydrate({ params }) {  
+  async hydrate({ params, sideAAddress }) {  
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const sideAContract = new ethers.Contract('0xBD62eF39e6d0952CbF01Cb747f98BF9C9F797509', SIDE_A_ABI, provider);
+    const sideAContract = new ethers.Contract(sideAAddress, SIDE_A_ABI, provider);
     const nftIpfsUrl = await sideAContract.tokenURI(params.nftid);
     
     this.nft = (await axios.get(nftIpfsUrl)).data;
