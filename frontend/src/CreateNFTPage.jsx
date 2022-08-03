@@ -78,7 +78,7 @@ class CreateNFTPage extends Nullstack {
 
   render() {
     return (
-      <div class="md:grid md:grid-cols-2 md:gap-6 bg-black text-white">
+      <div class="md:grid md:grid-cols-2 md:gap-6 text-white">
         <div class="mt-5 md:mt-0 md:col-span-1">
           <div>
             <div class="shadow sm:rounded-md sm:overflow-hidden">
@@ -99,19 +99,19 @@ class CreateNFTPage extends Nullstack {
 
                 <div class="col-span-6 sm:col-span-3 text-base">
                   <label class="block text-sm">Name *</label>
-                  <input bind={this.nameSideA} value={this.nameSideA} class="mt-1 block w-full sm:text-sm bg-black border border-white h-10" />
+                  <input bind={this.nameSideA} value={this.nameSideA} class="mt-1 block w-full sm:text-sm bg-gray-900 border border-white h-10" />
                 </div>
 
                 <div class="col-span-6 sm:col-span-3 text-base">
                   <label class="block text-sm ">External link</label>
-                  <input bind={this.externalLinkSideA} value={this.externalLinkSideA} class="mt-1 block w-full sm:text-sm bg-black border border-white h-10" />
+                  <input bind={this.externalLinkSideA} value={this.externalLinkSideA} class="mt-1 block w-full sm:text-sm bg-gray-900 border border-white h-10" />
                 </div>
 
                 <div>
                   <label class="block text-sm mb-1"> Description </label>
                   <p class='text-gray-400 text-sm mb-4'>The description will be included on the item's detail page underneath its image. Markdown syntax is supported.</p>
                   <div class="mt-1">
-                    <textarea bind={this.descriptionSideA} value={this.descriptionSideA} class="mt-1 block w-full sm:text-sm bg-black h-32 border border-white" />
+                    <textarea bind={this.descriptionSideA} value={this.descriptionSideA} class="mt-1 block w-full sm:text-sm bg-gray-900 h-32 border border-white" />
                   </div>
                 </div>
               </div>
@@ -139,19 +139,19 @@ class CreateNFTPage extends Nullstack {
 
                 <div class="col-span-6 sm:col-span-3 text-base">
                   <label class="block text-sm">Name *</label>
-                  <input bind={this.nameSideB} value={this.nameSideB} class="mt-1 block w-full sm:text-sm bg-black border border-white h-10" />
+                  <input bind={this.nameSideB} value={this.nameSideB} class="mt-1 block w-full sm:text-sm bg-gray-900 border border-white h-10" />
                 </div>
 
                 <div class="col-span-6 sm:col-span-3 text-base">
                   <label class="block text-sm ">External link</label>
-                  <input bind={this.externalLinkSideB} value={this.externalLinkSideB} class="mt-1 block w-full sm:text-sm bg-black border border-white h-10" />
+                  <input bind={this.externalLinkSideB} value={this.externalLinkSideB} class="mt-1 block w-full sm:text-sm bg-gray-900 border border-white h-10" />
                 </div>
 
                 <div>
                   <label class="block text-sm mb-1"> Description </label>
                   <p class='text-gray-400 text-sm mb-4'>The description will be included on the item's detail page underneath its image. Markdown syntax is supported.</p>
                   <div class="mt-1">
-                    <textarea bind={this.descriptionSideB} value={this.descriptionSideB} class="mt-1 block w-full sm:text-sm bg-black h-32 border border-white" />
+                    <textarea bind={this.descriptionSideB} value={this.descriptionSideB} class="mt-1 block w-full sm:text-sm bg-gray-900 h-32 border border-white" />
                   </div>
                 </div>
               </div>
@@ -159,7 +159,7 @@ class CreateNFTPage extends Nullstack {
           </div>
         </div>
 
-        <div class='p-6'>
+        <div class='p-6 '>
           <button onclick={this.onCreateNFT} class="inline-flex justify-start py-2 px-4 font-bold text-black bg-yellow-400 hover:bg-yellow-500">
             Create NFT
           </button>
