@@ -1,12 +1,14 @@
 import { ethers } from 'hardhat';
 import { SideAStarvingNFT, SideBStarvingNFT } from '../typechain-types';
 
+const tapTokenAddress = '0x48c366D25dEC0B19f367aFf0869e9869E095c0F9'
+
 async function main() {
     let sideA: SideAStarvingNFT;
     let sideB: SideBStarvingNFT;
 
     const SideAStarvingNFT = await ethers.getContractFactory('SideAStarvingNFT');
-    sideA = await SideAStarvingNFT.deploy();
+    sideA = await SideAStarvingNFT.deploy(tapTokenAddress);
     console.log('Deploying SideAStarvingNFT...');
     await sideA.deployed();
     console.log('Contract deployed at:', sideA.address);
