@@ -6,6 +6,8 @@ import Navbar from './Navbar';
 import TapsPage from './TapsPage';
 import NFTDetailPage from './NFTDetailPage';
 import PublicProfilePage from './PublicProfilePage';
+import AdminNavbar from './AdminNavbar';
+import AdminHome from './AdminHome';
 
 class Application extends Nullstack {
 
@@ -29,8 +31,10 @@ class Application extends Nullstack {
       <main class='min-h-min'>
         {
           isAdmin ? (
-            <div class='bg-black min-h-screen'>
-
+            <div class='bg-gray-900 ck min-h-screen flex'>
+              <AdminNavbar />
+              <CreateNFTPage route='/create' />
+              <AdminHome />
             </div>
           ) : (
             <div class='bg-red-900 min-h-screen'>
@@ -40,7 +44,6 @@ class Application extends Nullstack {
               <div class='flex justify-center'>
                 <div class='max-w-7xl'>
                   <ExplorePage route='/explore' />
-                  <CreateNFTPage route='/create' />
                   <TapsPage route='/taps' />
                   <NFTDetailPage route='/explore/:nftid' />
                   <PublicProfilePage route='/user/:address' />
