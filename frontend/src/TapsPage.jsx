@@ -1,5 +1,5 @@
 import Nullstack from 'nullstack';
-import { BigNumber, ethers } from 'ethers';
+import { ethers } from 'ethers';
 
 import { abi as TAP_ABI } from "../public/Tap.json";
 
