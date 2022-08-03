@@ -7,8 +7,6 @@ import TapsPage from './TapsPage';
 import NFTDetailPage from './NFTDetailPage';
 import PublicProfilePage from './PublicProfilePage';
 
-// import './tailwind.css'
-
 class Application extends Nullstack {
 
   initiate(context) {
