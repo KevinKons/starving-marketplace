@@ -3,17 +3,31 @@ import axios from 'axios';
 import { BigNumber, ethers } from 'ethers';
 
 import { abi as SIDE_A_ABI } from "../public/SideAStarvingNFT.json";
+import { abi as TAP_ABI } from "../public/Tap.json";
 
 class NFTDetailPage extends Nullstack {
 
   nft = {};
 
-  async hydrate({ params, sideAAddress }) {  
+  async hydrate({ params, sideAAddress }) {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const sideAContract = new ethers.Contract(sideAAddress, SIDE_A_ABI, provider);
     const nftIpfsUrl = await sideAContract.tokenURI(params.nftid);
-    
+
     this.nft = (await axios.get(nftIpfsUrl)).data;
+  }
+
+  async buy({ tapTokenAddress, sideAAddress, params }) {
+    const nftPrice = BigNumber.from('490000000000000000');
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const sideAContract = new ethers.Contract(sideAAddress, SIDE_A_ABI, provider);
+    const tapToken = new ethers.Contract(tapTokenAddress, TAP_ABI, provider);
+
+    const tapTokenWithSigner = tapToken.connect(provider.getSigner());
+    const sideAWithSigner = sideAContract.connect(provider.getSigner());
+
+    await tapTokenWithSigner.approve(sideAAddress, nftPrice);
+    sideAWithSigner.buy(params.nftid);
   }
 
   render() {
