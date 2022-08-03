@@ -12,6 +12,7 @@ class Application extends Nullstack {
   initiate(context) {
     context.tapTokenAddress = '0x48c366D25dEC0B19f367aFf0869e9869E095c0F9';
     context.sideAAddress = '0xF8A994283ce417735383cc682698B0EfD117E21c';
+    context.adminAddress = '0x0216fa489606d6c1862072aa9416db4c56524b33';
   }
 
   async hydrate(context) {
@@ -22,22 +23,32 @@ class Application extends Nullstack {
     }
   }
 
-  render() {
+  render({ userAddress, adminAddress }) {
+    const isAdmin = adminAddress === userAddress;
     return (
-      <main class='bg-red-900 h-screen'>
-        <UserInfoMenu />
-        <Navbar />
+      <main class='min-h-min'>
+        {
+          isAdmin ? (
+            <div class='bg-black min-h-screen'>
 
-        <div class='flex justify-center'>
-          <div class='max-w-7xl'>
-            <ExplorePage route='/explore' />
-            <CreateNFTPage route='/create' />
-            <TapsPage route='/taps' />
-            <NFTDetailPage route='/explore/:nftid' />
-            <PublicProfilePage route='/user/:address' />
-          </div>
-        </div>
+            </div>
+          ) : (
+            <div class='bg-red-900 min-h-screen'>
+              <UserInfoMenu />
+              <Navbar />
 
+              <div class='flex justify-center'>
+                <div class='max-w-7xl'>
+                  <ExplorePage route='/explore' />
+                  <CreateNFTPage route='/create' />
+                  <TapsPage route='/taps' />
+                  <NFTDetailPage route='/explore/:nftid' />
+                  <PublicProfilePage route='/user/:address' />
+                </div>
+              </div>
+            </div>
+          )
+        }
       </main>
     )
   }
