@@ -51,7 +51,7 @@ class CreateNFTPage extends Nullstack {
   async onCreateNFT({ userAddress, sideAAddress }) {
     const urlFileSideA = await this.pinFileToIPFS({ side: 'A' });
     const urlFileSideB = await this.pinFileToIPFS({ side: 'B' });
-    
+
     const sideAJson = {
       name: this.nameSideA,
       externalLink: this.externalLinkSideA,
@@ -68,7 +68,7 @@ class CreateNFTPage extends Nullstack {
 
     const jsonUrlSideA = await this.pinJsonToIPFS({ json: sideAJson });
     const jsonUrlSideB = await this.pinJsonToIPFS({ json: sideBJson });
-  
+
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const sideAContract = new ethers.Contract(sideAAddress, SIDE_A_ABI, provider);
 
@@ -83,6 +83,10 @@ class CreateNFTPage extends Nullstack {
           <div>
             <div class="shadow sm:rounded-md sm:overflow-hidden">
               <div class="space-y-6 p-6">
+
+                <h1 class='font-semibold text-2xl'>
+                  Create a new NFT
+                </h1>
 
                 <div>
                   <label class="text-base mb-1">Image, Video, Audio, or 3D Model*</label>
@@ -124,6 +128,15 @@ class CreateNFTPage extends Nullstack {
             <div class="shadow sm:rounded-md sm:overflow-hidden">
               <div class="space-y-6 p-6">
 
+                <div class='flex font-semibold text-2xl'>
+                  <h1 class='text-red-400'>
+                    Side B&nbsp;
+                  </h1>
+                  <h1>
+                     - NFT for donation
+                  </h1>
+                </div>
+
                 <div>
                   <label class="text-base mb-1">Image, Video, Audio, or 3D Model*</label>
                   <p class='text-gray-400 text-sm mb-4'>File types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF. Max size: 100 MB</p>
@@ -159,7 +172,7 @@ class CreateNFTPage extends Nullstack {
           </div>
         </div>
 
-        <div class='p-6 '>
+        <div class='p-1 ml-4'>
           <button onclick={this.onCreateNFT} class="inline-flex justify-start py-2 px-4 font-bold text-black bg-yellow-400 hover:bg-yellow-500">
             Create NFT
           </button>
