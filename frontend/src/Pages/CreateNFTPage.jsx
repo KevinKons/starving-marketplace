@@ -2,10 +2,7 @@ import Nullstack from 'nullstack';
 import axios from 'axios';
 import { ethers } from "ethers";
 
-import { abi as SIDE_A_ABI } from "../public/SideAStarvingNFT.json";
-
-// import * as dotenv from 'dotenv';
-// dotenv.config();
+import { abi as SIDE_A_ABI } from "../../public/SideAStarvingNFT.json";
 
 class CreateNFTPage extends Nullstack {
 
