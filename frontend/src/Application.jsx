@@ -3,7 +3,7 @@ import ExplorePage from './pages/ExplorePage';
 import UserInfoMenu from './UserInfoMenu';
 import Navbar from './Navbar';
 import TapsPage from './TapsPage';
-import NFTDetailPage from './NFTDetailPage';
+import NFTDetailPage from './pages/NFTDetailPage';
 import PublicProfilePage from './PublicProfilePage';
 import AdminNavbar from './admin/AdminNavbar';
 import AdminHome from './admin/AdminHome';

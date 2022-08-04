@@ -2,9 +2,9 @@ import Nullstack from 'nullstack';
 import axios from 'axios';
 import { BigNumber, ethers } from 'ethers';
 
-import { abi as SIDE_A_ABI } from "../public/SideAStarvingNFT.json";
-import { abi as SIDE_B_ABI } from "../public/SideBStarvingNFT.json";
-import { abi as TAP_ABI } from "../public/Tap.json";
+import { abi as SIDE_A_ABI } from "../../public/SideAStarvingNFT.json";
+import { abi as SIDE_B_ABI } from "../../public/SideBStarvingNFT.json";
+import { abi as TAP_ABI } from "../../public/Tap.json";
 
 class NFTDetailPage extends Nullstack {
 
