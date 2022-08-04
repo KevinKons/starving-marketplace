@@ -26,7 +26,7 @@ class PublicProfilePage extends Nullstack {
       <section class='flex flex-col items-start text-black mt-28'>
         <div class='flex space-x-5 items-center'>
           <div class='bg-yellow-300 w-24 h-24 ml-1'>
-            {/* <img class='h-6 mr-4' src="tap-symbol.png" /> */}
+            <img class='h-6 mr-4' src="tap-symbol.png" />
           </div>
           <div class='border border-1 px-3 text-gray-400 text-sm'>
             {`${params.address.slice(0, 14)}....${params.address.slice(params.address.length - 7)}`}

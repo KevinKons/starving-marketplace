@@ -60,7 +60,7 @@ class NFTDetailPage extends Nullstack {
             </div>
           </div>
           <button onclick={this.buy} class='flex space-x-2 justify-center items-center mt-7 font-bold text-black bg-yellow-400 hover:bg-yellow-500 w-28 h-11'>
-            {/* <img src='buy-now-icon.png' /> */}
+            <img src='buy-now-icon.png' />
             <div>
               Buy now
             </div>
