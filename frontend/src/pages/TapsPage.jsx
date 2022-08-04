@@ -1,7 +1,7 @@
 import Nullstack from 'nullstack';
 import { ethers } from 'ethers';
 
-import { abi as TAP_ABI } from "../public/Tap.json";
+import { abi as TAP_ABI } from "../../public/Tap.json";
 
 class TapsPage extends Nullstack {
 
