@@ -1,5 +1,5 @@
 import Nullstack from 'nullstack';
-import Logo from './Logo'
+import Logo from './components/Logo'
 
 class Navbar extends Nullstack {
   render() {
