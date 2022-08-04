@@ -26,7 +26,7 @@ class NFTDetailPage extends Nullstack {
     const tapTokenWithSigner = tapToken.connect(provider.getSigner());
     const sideAWithSigner = sideAContract.connect(provider.getSigner());
 
-    await tapTokenWithSigner.approve(sideAAddress, nftPrice);
+    tapTokenWithSigner.approve(sideAAddress, nftPrice);
     sideAWithSigner.buy(params.nftid);
   }
 
