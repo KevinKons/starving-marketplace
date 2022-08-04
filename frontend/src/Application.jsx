@@ -5,14 +5,15 @@ import Navbar from './Navbar';
 import TapsPage from './TapsPage';
 import NFTDetailPage from './NFTDetailPage';
 import PublicProfilePage from './PublicProfilePage';
-import AdminNavbar from './AdminNavbar';
-import AdminHome from './AdminHome';
+import AdminNavbar from './admin/AdminNavbar';
+import AdminHome from './admin/AdminHome';
 
 class Application extends Nullstack {
 
   initiate(context) {
     context.tapTokenAddress = '0x48c366D25dEC0B19f367aFf0869e9869E095c0F9';
     context.sideAAddress = '0xF8A994283ce417735383cc682698B0EfD117E21c';
+    context.sideBAddress = '0x8D7a7e4F1413f4ac0cC4333C78bBF15501c136F8';
     context.adminAddress = '0x0216fa489606d6c1862072aa9416db4c56524b33';
   }
 

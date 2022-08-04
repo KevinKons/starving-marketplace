@@ -1,8 +1,8 @@
 import Nullstack from 'nullstack';
 import { ethers } from 'ethers';
-import { convertIntoGwei } from './util.js'
+import { convertIntoGwei } from '../util.js'
 
-import { abi as TAP_ABI } from "../public/Tap.json";
+import { abi as TAP_ABI } from "../../public/Tap.json";
 
 class Faucet extends Nullstack {
 
