@@ -7,8 +7,7 @@ export function countDecimals(value) {
 }
 
 export function convertIntoGwei(value) {
-    console.log('val', value)
-    const decimalsCount = countDecimals({ value: value })
+    const decimalsCount = countDecimals(value)
     const decimalsToAdd = 18 - decimalsCount;
     let numberWithoutDot = String(Math.floor(value));
     if (String(value).includes('.')) {
