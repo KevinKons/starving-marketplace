@@ -1,5 +1,5 @@
 import Nullstack from 'nullstack';
-import ExplorePage from './ExplorePage';
+import ExplorePage from './pages/ExplorePage';
 import UserInfoMenu from './UserInfoMenu';
 import Navbar from './Navbar';
 import TapsPage from './TapsPage';

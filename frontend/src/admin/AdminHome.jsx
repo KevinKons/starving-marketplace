@@ -1,6 +1,6 @@
 import Nullstack from 'nullstack'
 import Faucet from './Faucet';
-import CreateNFTPage from '../Pages/CreateNFTPage';
+import CreateNFTPage from '../pages/CreateNFTPage';
 
 class AdminHome extends Nullstack {
 
