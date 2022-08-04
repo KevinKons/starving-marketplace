@@ -2,9 +2,9 @@ import Nullstack from 'nullstack';
 import axios from 'axios';
 import { ethers } from 'ethers';
 
-import { abi as SIDE_A_ABI } from "../public/SideAStarvingNFT.json";
+import { abi as SIDE_A_ABI } from "../../public/SideAStarvingNFT.json";
 
-import ListNFT from './ListNFT';
+import ListNFT from '../ListNFT';
 
 class PublicProfilePage extends Nullstack {
 
