@@ -1,15 +1,14 @@
 import Nullstack from 'nullstack'
 import Faucet from './Faucet';
+import CreateNFTPage from './CreateNFTPage';
 
 class AdminHome extends Nullstack {
-
-  address = '';
-  quantity = 0;
 
   render() {
     return (
       <div>
         <Faucet route='/' />
+        <CreateNFTPage route='/create' />
       </div>
     )
   }

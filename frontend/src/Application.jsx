@@ -1,6 +1,5 @@
 import Nullstack from 'nullstack';
 import ExplorePage from './ExplorePage';
-import CreateNFTPage from './CreateNFTPage';
 import UserInfoMenu from './UserInfoMenu';
 import Navbar from './Navbar';
 import TapsPage from './TapsPage';
@@ -33,7 +32,6 @@ class Application extends Nullstack {
           isAdmin ? (
             <div class='bg-gray-900 ck min-h-screen flex'>
               <AdminNavbar />
-              <CreateNFTPage route='/create' />
               <AdminHome />
             </div>
           ) : (
