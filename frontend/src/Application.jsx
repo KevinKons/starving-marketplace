@@ -44,7 +44,7 @@ class Application extends Nullstack {
                   <ExplorePage route='/explore' />
                   <TapsPage route='/taps' />
                   <NFTDetailPage route='/nftdetail' />
-                  <PublicProfilePage route='/user/:address' />
+                  <PublicProfilePage route='/user' />
                 </div>
               </div>
             </div>
