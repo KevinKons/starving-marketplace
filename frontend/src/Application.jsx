@@ -43,7 +43,7 @@ class Application extends Nullstack {
                 <div class='max-w-7xl'>
                   <ExplorePage route='/explore' />
                   <TapsPage route='/taps' />
-                  <NFTDetailPage route='/explore/:nftid' />
+                  <NFTDetailPage route='/nftdetail' />
                   <PublicProfilePage route='/user/:address' />
                 </div>
               </div>
