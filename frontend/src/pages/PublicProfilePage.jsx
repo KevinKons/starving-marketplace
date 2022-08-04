@@ -4,7 +4,7 @@ import { ethers } from 'ethers';
 
 import { abi as SIDE_A_ABI } from "../../public/SideAStarvingNFT.json";
 
-import ListNFT from '../ListNFT';
+import ListNFT from '../components/ListNFT';
 
 class PublicProfilePage extends Nullstack {
 
