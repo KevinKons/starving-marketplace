@@ -3,18 +3,24 @@ import axios from 'axios';
 import { BigNumber, ethers } from 'ethers';
 
 import { abi as SIDE_A_ABI } from "../public/SideAStarvingNFT.json";
+import { abi as SIDE_B_ABI } from "../public/SideBStarvingNFT.json";
 import { abi as TAP_ABI } from "../public/Tap.json";
 
 class NFTDetailPage extends Nullstack {
 
   nft = {};
+  nftBSide = {};
 
-  async hydrate({ params, sideAAddress }) {
+  async hydrate({ params, sideAAddress, sideBAddress }) {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const sideAContract = new ethers.Contract(sideAAddress, SIDE_A_ABI, provider);
+    const sideBContract = new ethers.Contract(sideBAddress, SIDE_B_ABI, provider);
     const nftIpfsUrl = await sideAContract.tokenURI(params.id);
+    const nftBsideIpfsUrl = await sideBContract.tokenURI(params.id);
+
 
     this.nft = (await axios.get(nftIpfsUrl)).data;
+    this.nftBSide = (await axios.get(nftBsideIpfsUrl)).data;
   }
 
   async buy({ tapTokenAddress, sideAAddress, params }) {
@@ -36,6 +42,10 @@ class NFTDetailPage extends Nullstack {
         <div>
           <div class="border-2 border-white p-2 w-full min-h-80 lg:h-60">
             <img src={this.nft.image} class="w-full h-full object-center object-cover lg:w-full lg:h-full" />
+          </div>
+
+          <div class="border-2 border-white p-2 w-full min-h-80 lg:h-60">
+            <img src={this.nftBSide.image} class="w-full h-full object-center object-cover lg:w-full lg:h-full" />
           </div>
         </div>
         <div class='pt-10'>
