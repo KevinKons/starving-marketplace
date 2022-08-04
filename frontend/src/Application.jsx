@@ -1,6 +1,6 @@
 import Nullstack from 'nullstack';
 import ExplorePage from './pages/ExplorePage';
-import UserInfoMenu from './UserInfoMenu';
+import UserInfoMenu from './components/UserInfoMenu';
 import Navbar from './components/Navbar';
 import TapsPage from './pages/TapsPage';
 import NFTDetailPage from './pages/NFTDetailPage';
