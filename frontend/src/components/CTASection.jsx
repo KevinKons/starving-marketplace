@@ -1,6 +1,6 @@
 export default function CTASection() {
     return (
-      <section class='flex justify-center items-center text-white text-center h-613' style='background-image: url(./cta-background.svg)'>
+      <section class='flex justify-center items-center text-white text-center h-613 mt-32' style='background-image: url(./cta-background.svg)'>
         <div>
           <h2 class='text-3xl font-semibold text-center'>
             With <a class='bg-yellow-400 text-black'>great power</a> comes non-fungibility
