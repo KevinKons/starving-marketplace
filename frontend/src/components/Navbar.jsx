@@ -11,7 +11,7 @@ class Navbar extends Nullstack {
               <Logo />
               <div class="hidden sm:block sm:ml-6">
                 <div class="flex space-x-4">
-                  <a href="/home" class="px-3 py-2 text-sm font-semibold">Home</a>
+                  <a href="/" class="px-3 py-2 text-sm font-semibold">Home</a>
 
                   <a href="/wtf" class="px-3 py-2 text-sm font-normal">WTF?</a>
 
