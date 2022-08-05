@@ -1,8 +1,41 @@
 export default function HomePage() {
   return (
     <div>
+      <HeroSection />
       <ShredsOfHopeSection />
     </div>
+  )
+}
+
+function HeroSection() {
+  return (
+    <section class='flex justify-between items-center text-white mt-16 mb-44'>
+      <div>
+        <h1 class='text-3xl font-semibold text-left'>
+          Your kindness can make<br />
+          the world of a difference<br />
+          for a<a class='bg-yellow-400 text-black'> child's crypto wallet.</a>
+        </h1>
+        <p class='text-left my-5'>
+          They may not have food, but you can help<br />
+          an NFT-less child with this buy one, give one<br />
+          opportunity. Every child deserves an NFT.
+        </p>
+        <div class='flex space-x-4 text-lg'>
+          <a href='/explore' class="py-3 px-8 font-bold text-black bg-yellow-400 hover:bg-yellow-500">
+            Explore
+          </a>
+          <a href='/taps' class="py-3 px-8 font-bold text-red-400 border-2 border-red-400">
+            Buy TAPs
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <img src='./kid-in-sofa-small.png' class='w-96 border-4 border-white' />
+      </div>
+
+    </section>
   )
 }
 
