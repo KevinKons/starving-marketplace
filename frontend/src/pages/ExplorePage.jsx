@@ -23,7 +23,7 @@ class ExplorePage extends Nullstack {
 
   render() {
     return (
-      <section class='flex flex-col items-center text-black'>
+      <section class='flex flex-col items-center text-black mb-48 mt-16'>
         <ListNFT nfts={this.nftsForSale}/>
       </section>
     )
