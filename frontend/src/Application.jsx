@@ -1,5 +1,6 @@
 import Nullstack from 'nullstack';
 import HomePage from './pages/HomePage';
+import WTFPage from './pages/WTFPage';
 import ExplorePage from './pages/ExplorePage';
 import UserInfoMenu from './components/UserInfoMenu';
 import Navbar from './components/Navbar';
@@ -47,6 +48,7 @@ class Application extends Nullstack {
                 <div class='flex justify-center'>
                   <div class='max-w-7xl'>
                     <HomePage route='/' />
+                    <WTFPage route='/wtf' />
                     <ExplorePage route='/explore' />
                     <TapsPage route='/taps' />
                     <NFTDetailPage route='/nftdetail' />
