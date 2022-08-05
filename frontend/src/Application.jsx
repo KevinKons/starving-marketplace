@@ -1,4 +1,5 @@
 import Nullstack from 'nullstack';
+import HomePage from './pages/HomePage';
 import ExplorePage from './pages/ExplorePage';
 import UserInfoMenu from './components/UserInfoMenu';
 import Navbar from './components/Navbar';
@@ -8,6 +9,7 @@ import PublicProfilePage from './pages/PublicProfilePage';
 import AdminNavbar from './admin/AdminNavbar';
 import AdminHome from './admin/AdminHome';
 import Footer from './components/Footer';
+import CTASection from './components/CTASection';
 
 class Application extends Nullstack {
 
@@ -44,6 +46,7 @@ class Application extends Nullstack {
 
                 <div class='flex justify-center'>
                   <div class='max-w-7xl'>
+                    <HomePage route='/' />
                     <ExplorePage route='/explore' />
                     <TapsPage route='/taps' />
                     <NFTDetailPage route='/nftdetail' />
@@ -51,7 +54,8 @@ class Application extends Nullstack {
                   </div>
                 </div>
               </div>
-              <Footer/>
+              <CTA />
+              <Footer />
             </div>
           )
         }
@@ -59,6 +63,21 @@ class Application extends Nullstack {
     )
   }
 
+  renderCTA() {
+    return (
+      <div>
+        <div route='/' class='mx-20'>
+          <CTASection />
+        </div>
+        <div route='/wtf' class='mx-20'>
+          <CTASection />
+        </div>
+        <div route='/taps' class='mx-20'>
+          <CTASection />
+        </div>
+      </div>
+    )
+  }
 }
 
 export default Application;
